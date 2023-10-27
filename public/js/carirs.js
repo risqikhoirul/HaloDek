@@ -52,6 +52,11 @@ function showResult() {
   var selectedProvinceId = parseInt(provinceSelect.value);
   var selectedRegencyId = parseInt(regencySelect.value);
 
+  // Show loading spinner
+  resultContainer.innerHTML = `<div class="spinner-border m-5 text-success" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>`;
+
   fetchProvinces()
     .then((provinceData) => {
       var selectedProvince = provinceData.find((province) => province.id === selectedProvinceId);
@@ -69,6 +74,7 @@ function showResult() {
       return selectedRegencyId ? getHospital(selectedProvinceId, selectedRegencyId) : "";
     })
     .then((hospitalHTML) => {
+      resultContainer.innerHTML = "";
       resultContainer.innerHTML = `<p>${hospitalHTML}</p>`;
     })
     .catch((error) => {
