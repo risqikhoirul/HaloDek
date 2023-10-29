@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
                     <a class="nav-link" href="<?= base_url("/"); ?>">Rumah</a>
-                    <a class="nav-link" href="#">Tentang</a>
+                   
                     <a class="nav-link" href="<?= base_url("cekbmi"); ?>">Cek BMI</a>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -33,9 +33,7 @@
                         </ul>
                     </li>
                     <a class="nav-link" href="<?= base_url("kesehatan"); ?>">Seputar Kesehatan</a>
-                    <a class="nav-link" href="#">Hubungi</a>
-                </div>
-                <button class="btn btn-primary ml-2">Daftar</button>
+                </div>  
             </div>
         </nav>
         <!-- end navbar -->
