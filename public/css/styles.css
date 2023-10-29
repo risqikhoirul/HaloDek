@@ -140,3 +140,46 @@
   font-size: 1.5rem;
   color: var(--primary-color);
 }
+
+h1 {
+  font-size: 27px;
+  color: #000000;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Gaya untuk daftar layanan */
+.list-group-item {
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Gaya untuk ikon panah dropdown */
+.fas.fa-chevron-down {
+  font-size: 16px;
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Gaya untuk ikon panah dropdown ketika daftar terbuka */
+.list-group-item[aria-expanded="true"] .fas.fa-chevron-down {
+  transform: rotate(180deg);
+}
+
+/* Gaya untuk daftar Kecamatan */
+.list-group-item .list-group-item {
+  margin-left: 20px;
+}
+
+/* Gaya tambahan untuk ikon panah dropdown ketika dihover */
+.list-group-item:hover .fas.fa-chevron-down {
+  transform: rotate(180deg);
+}
+
+/* Gaya tambahan untuk mengatur warna latar belakang ketika item dihover */
+.list-group-item:hover {
+  background-color: #e1e1e1;
+}
