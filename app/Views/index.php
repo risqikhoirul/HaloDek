@@ -27,7 +27,7 @@
                             Layanan
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="<?= base_url("carirs"); ?>">Cari Rumah Sakit</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url("carirs"); ?>">Rumah Sakit</a></li>
                             <li><a class="dropdown-item" href="<?= base_url("ambulan"); ?>">Ambulan</a></li>
                        
                         </ul>

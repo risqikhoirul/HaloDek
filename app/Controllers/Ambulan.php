@@ -7,7 +7,7 @@ class Ambulan extends BaseController
     public function index(): string
     {
         $data = [
-            'title'=> 'Ambulan',
+            'title'=> 'Layanan Ambulan',
         ];
         return view('ambulan', $data);
     }

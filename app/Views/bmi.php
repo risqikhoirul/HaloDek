@@ -1,28 +1,28 @@
 <?= $this->extend('index'); ?>
 <?= $this->section('content'); ?>
-
+<br><br><br>
         <div class="row">
             <div class="col-md-6">
                 <div class="content">
                 <h1>Cek BMI</h1>
                     <form>
                         <div class="mb-3">
-                            <label for="weight" class="form-label">Weight (kg): </label>
+                            <label for="weight" class="form-label">Berat Badan (kg): </label>
                             <input type="number" placeholder="0" class="form-control" id="weight" aria-describedby="emailHelp">
                         </div>
                         <div class="mb-3">
-                            <label for="height" class="form-label">Height (cm):</label>
+                            <label for="height" class="form-label">Tinggi Badan (cm):</label>
                             <input type="number" placeholder="0" class="form-control" id="height">
                         </div>
-                        <p>Your BMI is: <span id="result">-</span></p>
+                        <p>BMI Kamu: <span id="result">-</span></p>
                         <div id="interpretation"></div>
                     </form>
                 </div>
             </div>
             <div class="col-md-6">
           <div class="image">
-            <span class="image__bg"></span>
-            <img src="<?= base_url("/assets/header-bg.png"); ?>" alt="header image" class="img-fluid" />
+            <span class="image__bgf"></span>
+            <img src="<?= base_url("/assets/bmi.jpg"); ?>" alt="header image" class="img-fluid" />
             <div class="image__content image__content__1">
               <span><i class="ri-user-3-line"></i></span>
               <div class="details">
