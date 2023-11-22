@@ -11,23 +11,17 @@
     </div>
 
     <!-- Artikel Kesehatan -->
-    <div class="card">
-        <img src="<?= base_url("assets/olahraga.jpg"); ?>" class="card-img-top" alt="Gambar Artikel 1">
-        <div class="card-body">
-            <h5 class="card-title">Manfaat Olahraga untuk Kesehatan</h5>
-            <p class="card-text">Olahraga secara teratur dapat meningkatkan kesehatan tubuh dan pikiran.</p>
-            <a href="#" class="btn btn-primary">Baca Artikel</a>
+    <!-- Loop untuk menampilkan artikel dari model -->
+    <?php foreach ($posts as $post) : ?>
+        <div class="card mt-4">
+            <img src="<?= base_url($post['img']); ?>" class="card-img-top" alt="Gambar Artikel">
+            <div class="card-body">
+                <h5 class="card-title"><?= esc($post['title']); ?></h5>
+                <p class="card-text"><?= esc($post['article']); ?></p>
+                <a href="#" class="btn btn-primary">Baca Artikel</a>
+            </div>
         </div>
-    </div>
-
-    <div class="card mt-4">
-        <img src="<?= base_url("assets/mental.jpg"); ?>" class="card-img-top" alt="Gambar Artikel 2">
-        <div class="card-body">
-            <h5 class="card-title">Tips Menjaga Kesehatan Mental</h5>
-            <p class="card-text">Berbagai tips untuk menjaga kesehatan mental dan kesejahteraan emosional Anda.</p>
-            <a href="#" class="btn btn-primary">Baca Artikel</a>
-        </div>
-    </div>
+    <?php endforeach; ?>
 
 </div>
 
