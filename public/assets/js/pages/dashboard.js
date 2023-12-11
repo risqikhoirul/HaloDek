@@ -1,13 +1,12 @@
-
 var chartColors = {
-  red: 'rgb(255, 99, 132)',
-  orange: 'rgb(255, 159, 64)',
-  yellow: 'rgb(255, 205, 86)',
-  green: 'rgb(75, 192, 192)',
-  info: '#41B1F9',
-  blue: '#3245D1',
-  purple: 'rgb(153, 102, 255)',
-  grey: '#EBEFF6'
+  red: "rgb(255, 99, 132)",
+  orange: "rgb(255, 159, 64)",
+  yellow: "rgb(255, 205, 86)",
+  green: "rgb(75, 192, 192)",
+  info: "#41B1F9",
+  blue: "#3245D1",
+  purple: "rgb(153, 102, 255)",
+  grey: "#EBEFF6",
 };
 
 var config1 = {
@@ -16,10 +15,10 @@ var config1 = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
     datasets: [
       {
-        label: "Balance",
+        label: "Total",
         backgroundColor: "#fff",
         borderColor: "#fff",
-        data: [20, 40, 20, 70, 10, 50, 20],
+        data: [200, 400, 200, 700, 100, 500, 500],
         fill: false,
         pointBorderWidth: 100,
         pointBorderColor: "transparent",
@@ -31,7 +30,7 @@ var config1 = {
   },
   options: {
     responsive: true,
-    maintainAspectRatio: false, 
+    maintainAspectRatio: false,
     layout: {
       padding: {
         left: -10,
@@ -84,10 +83,10 @@ var config2 = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
     datasets: [
       {
-        label: "Revenue",
+        label: "Terjual",
         backgroundColor: "#fff",
         borderColor: "#fff",
-        data: [20, 800, 300, 400, 10, 50, 20],
+        data: [20, 800, 300, 400, 90, 200, 300],
         fill: false,
         pointBorderWidth: 100,
         pointBorderColor: "transparent",
@@ -152,10 +151,10 @@ var config3 = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
     datasets: [
       {
-        label: "Orders",
+        label: "Tersisa",
         backgroundColor: "#fff",
         borderColor: "#fff",
-        data: [20, 40, 20, 200, 10, 540, 723],
+        data: [20, 40, 20, 200, 100, 50, 150],
         fill: false,
         pointBorderWidth: 100,
         pointBorderColor: "transparent",
@@ -221,10 +220,10 @@ var config4 = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
     datasets: [
       {
-        label: "My First dataset",
+        label: "Kadaluarsa",
         backgroundColor: "#fff",
         borderColor: "#fff",
-        data: [20, 40, 20, 70, 10, 5, 23],
+        data: [20, 40, 20, 70, 30, 80, 50],
         fill: false,
         pointBorderWidth: 100,
         pointBorderColor: "transparent",
@@ -236,7 +235,7 @@ var config4 = {
   },
   options: {
     responsive: true,
-    maintainAspectRatio: false, 
+    maintainAspectRatio: false,
     layout: {
       padding: {
         left: -10,
@@ -285,12 +284,12 @@ var config4 = {
   },
 };
 
-var randomScalingFactor = function() {
+var randomScalingFactor = function () {
   return (Math.random() > 0.5 ? 1.0 : 1.0) * Math.round(Math.random() * 100);
 };
 
 // draws a rectangle with a rounded top
-Chart.helpers.drawRoundedTopRectangle = function(ctx, x, y, width, height, radius) {
+Chart.helpers.drawRoundedTopRectangle = function (ctx, x, y, width, height, radius) {
   ctx.beginPath();
   ctx.moveTo(x + radius, y);
   // top right corner
@@ -300,14 +299,14 @@ Chart.helpers.drawRoundedTopRectangle = function(ctx, x, y, width, height, radiu
   ctx.lineTo(x + width, y + height);
   // bottom left corner
   ctx.lineTo(x, y + height);
-  // top left	
+  // top left
   ctx.lineTo(x, y + radius);
   ctx.quadraticCurveTo(x, y, x + radius, y);
   ctx.closePath();
 };
 
 Chart.elements.RoundedTopRectangle = Chart.elements.Rectangle.extend({
-  draw: function() {
+  draw: function () {
     var ctx = this._chart.ctx;
     var vm = this._view;
     var left, right, top, bottom, signX, signY, borderSkipped;
@@ -320,17 +319,17 @@ Chart.elements.RoundedTopRectangle = Chart.elements.Rectangle.extend({
       top = vm.y;
       bottom = vm.base;
       signX = 1;
-      signY = bottom > top? 1: -1;
-      borderSkipped = vm.borderSkipped || 'bottom';
+      signY = bottom > top ? 1 : -1;
+      borderSkipped = vm.borderSkipped || "bottom";
     } else {
       // horizontal bar
       left = vm.base;
       right = vm.x;
       top = vm.y - vm.height / 2;
       bottom = vm.y + vm.height / 2;
-      signX = right > left? 1: -1;
+      signX = right > left ? 1 : -1;
       signY = 1;
-      borderSkipped = vm.borderSkipped || 'left';
+      borderSkipped = vm.borderSkipped || "left";
     }
 
     // Canvas doesn't allow us to stroke inside the width so we can
@@ -338,13 +337,13 @@ Chart.elements.RoundedTopRectangle = Chart.elements.Rectangle.extend({
     if (borderWidth) {
       // borderWidth shold be less than bar width and bar height.
       var barSize = Math.min(Math.abs(left - right), Math.abs(top - bottom));
-      borderWidth = borderWidth > barSize? barSize: borderWidth;
+      borderWidth = borderWidth > barSize ? barSize : borderWidth;
       var halfStroke = borderWidth / 2;
       // Adjust borderWidth when bar top position is near vm.base(zero).
-      var borderLeft = left + (borderSkipped !== 'left'? halfStroke * signX: 0);
-      var borderRight = right + (borderSkipped !== 'right'? -halfStroke * signX: 0);
-      var borderTop = top + (borderSkipped !== 'top'? halfStroke * signY: 0);
-      var borderBottom = bottom + (borderSkipped !== 'bottom'? -halfStroke * signY: 0);
+      var borderLeft = left + (borderSkipped !== "left" ? halfStroke * signX : 0);
+      var borderRight = right + (borderSkipped !== "right" ? -halfStroke * signX : 0);
+      var borderTop = top + (borderSkipped !== "top" ? halfStroke * signY : 0);
+      var borderBottom = bottom + (borderSkipped !== "bottom" ? -halfStroke * signY : 0);
       // not become a vertical line?
       if (borderLeft !== borderRight) {
         top = borderTop;
@@ -361,10 +360,10 @@ Chart.elements.RoundedTopRectangle = Chart.elements.Rectangle.extend({
     var barWidth = Math.abs(left - right);
     var roundness = this._chart.config.options.barRoundness || 0.5;
     var radius = barWidth * roundness * 0.5;
-    
+
     // keep track of the original top of the bar
     var prevTop = top;
-    
+
     // move the top down so there is room to draw the rounded top
     top = prevTop + radius;
     var barRadius = top - prevTop;
@@ -375,7 +374,7 @@ Chart.elements.RoundedTopRectangle = Chart.elements.Rectangle.extend({
     ctx.lineWidth = borderWidth;
 
     // draw the rounded top rectangle
-    Chart.helpers.drawRoundedTopRectangle(ctx, left, (top - barRadius + 1), barWidth, bottom - prevTop, barRadius);
+    Chart.helpers.drawRoundedTopRectangle(ctx, left, top - barRadius + 1, barWidth, bottom - prevTop, barRadius);
 
     ctx.fill();
     if (borderWidth) {
@@ -390,57 +389,55 @@ Chart.elements.RoundedTopRectangle = Chart.elements.Rectangle.extend({
 Chart.defaults.roundedBar = Chart.helpers.clone(Chart.defaults.bar);
 
 Chart.controllers.roundedBar = Chart.controllers.bar.extend({
-  dataElementType: Chart.elements.RoundedTopRectangle
+  dataElementType: Chart.elements.RoundedTopRectangle,
 });
 
 var ctxBar = document.getElementById("bar").getContext("2d");
 var myBar = new Chart(ctxBar, {
-  type: 'bar',
+  type: "bar",
   data: {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-    datasets: [{
-      label: 'Students',
-      backgroundColor: [chartColors.grey, chartColors.grey, chartColors.grey, chartColors.grey, chartColors.info, chartColors.blue, chartColors.grey],
-      data: [
-        5, 
-        10, 
-        30, 
-        40, 
-        35, 
-        55, 
-        15, 
-      ]
-    }]
+    datasets: [
+      {
+        label: "Students",
+        backgroundColor: [chartColors.grey, chartColors.grey, chartColors.grey, chartColors.grey, chartColors.info, chartColors.blue, chartColors.grey],
+        data: [5, 10, 30, 40, 35, 55, 15],
+      },
+    ],
   },
   options: {
     responsive: true,
     barRoundness: 1,
     title: {
       display: false,
-      text: "Chart.js - Bar Chart with Rounded Tops (drawRoundedTopRectangle Method)"
+      text: "Chart.js - Bar Chart with Rounded Tops (drawRoundedTopRectangle Method)",
     },
     legend: {
-      display:false
+      display: false,
     },
     scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true,
-          suggestedMax: 40 + 20,
-          padding: 10,
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+            suggestedMax: 40 + 20,
+            padding: 10,
+          },
+          gridLines: {
+            drawBorder: false,
+          },
         },
-        gridLines: {
-          drawBorder: false,
-        }
-      }],
-      xAxes: [{
-            gridLines: {
-                display:false,
-                drawBorder: false
-            }
-        }]
-    }
-  }
+      ],
+      xAxes: [
+        {
+          gridLines: {
+            display: false,
+            drawBorder: false,
+          },
+        },
+      ],
+    },
+  },
 });
 var radialBarsOptions = {
   series: [44, 80, 67],
@@ -473,7 +470,7 @@ var radialBarsOptions = {
           label: "Earnings",
           color: "#25A6F1",
           fontSize: "16px",
-          formatter: function(w) {
+          formatter: function (w) {
             // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
             return "$4,124";
           },
