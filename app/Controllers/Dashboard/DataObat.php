@@ -56,7 +56,7 @@ class DataObat extends BaseController
             "id_Obat" => $this->request->getPost('id_Obat'),
         ];
         $dataObat = [
-            "namaUp" => $this->request->getPost('nama'),
+            "nama" => $this->request->getPost('nama'),
             "status" => $this->request->getPost('status'),
             "jenis" => $this->request->getPost('jenis'),
         ];
