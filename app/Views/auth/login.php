@@ -37,7 +37,7 @@
                         <div class="form-group position-relative has-icon-left">
                             <label for="username">Username</label>
                             <div class="position-relative">
-                                <input type="text" name="username" class="form-control" id="username">
+                                <input type="text" name="username" class="form-control <?= $errorMessage ? 'is-invalid' : '' ?>" id="username">
                                 <div class="form-control-icon">
                                     <i data-feather="user"></i>
                                 </div>
@@ -51,7 +51,7 @@
                                 </a>
                             </div>
                             <div class="position-relative">
-                                <input type="password" name="password" class="form-control" id="password">
+                                <input type="password" name="password" class="form-control <?= $errorMessage ? 'is-invalid' : '' ?>" id="password">
                                 <div class="form-control-icon">
                                     <i data-feather="lock"></i>
                                 </div>
