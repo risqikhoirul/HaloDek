@@ -30,11 +30,11 @@ class ModelDataObat extends Model
     protected $validationMessages   = [
         'nama'	=> [
             'required'		=> 'Nama Harus di Isi',
-            'man_length'	=> 'Nama Maximal 20 Karakter'
+            'max_length'	=> 'Nama Maximal 20 Karakter'
     ],
         'jenis'	=> [
             'required'		=> 'Jenis Harus di Isi',
-            'man_length'	=> 'Jenis Maximal 20 Karakter'
+            'max_length'	=> 'Jenis Maximal 20 Karakter'
 ],
 ];
     protected $skipValidation       = false;

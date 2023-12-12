@@ -3,12 +3,23 @@
 namespace App\Controllers\Dashboard;
 
 use App\Controllers\BaseController;
+use Config\Services;
 use App\Models\ModelDataObat;
 
 class DataObat extends BaseController
 {
+    protected $session;
+    public function __construct()
+    {
+        // start session
+        $this->session = Services::session();
+    }
     public function index()
     {
+        if (!$this->session->isLoggedIn) {
+            return redirect()->to('/auth/login');
+        }
+        
         $model = new ModelDataObat();
         $data = [
             'getObat' => $model->findAll(),
@@ -19,68 +30,53 @@ class DataObat extends BaseController
 
     public function add()
     {
-        // Tangkap data dari form
+        $model = new ModelDataObat();
+    
         $dataObat = [
             "nama" => $this->request->getPost('nama'),
             "status" => $this->request->getPost('status'),
             "jenis" => $this->request->getPost('jenis'),
         ];
-
-        // Memulai transaksi
-        $model = new ModelDataObat();
+    
         $model->transStart();
-
-        // Set aturan validasi
+    
         $getRule = $model->getRule();
         $model->setValidationRules($getRule);
-
-            // Validasi berhasil, insert data
-            if (!$model->insert($dataObat)) {
-                return redirect()->to("/dashboard/dataObat")->withInput()->with('errors', $model->errors());
-            }
-
-            // Commit transaksi jika berhasil
-            $model->transComplete();
-            return redirect()->to("/dashboard/dataObat");
+    
+        if (!$model->insert($dataObat)) {
+            $model->transRollback(); // Rollback transaksi jika terjadi kesalahan
+            return redirect()->to("/dashboard/dataObat")->withInput()->with('errors', $model->errors());
+        }
+    
+        $model->transComplete();
+        return redirect()->to("/dashboard/dataObat")->with('success', 'Data added successfully.');
     }
-
+    
     public function update()
     {
-
-        // Memulai transaksi
         $model = new ModelDataObat();
-        $model->transStart();
-
-                // Tangkap data dari form
-        $id = [
-            "id_Obat" => $this->request->getPost('id_ObatUp'),
-        ];
+    
+        $id = ["id_Obat" => $this->request->getPost('id_Obat')];
         $dataObat = [
-            "nama" => $this->request->getPost('namaUp'),
-            "status" => $this->request->getPost('statusUp'),
-            "jenis" => $this->request->getPost('jenisUp'),
+            "nama" => $this->request->getPost('nama'),
+            "status" => $this->request->getPost('status'),
+            "jenis" => $this->request->getPost('jenis'),
         ];
-        
-
-
-        // Set aturan validasi
+    
+        $model->transStart();
+    
         $getRule = $model->getRule();
         $model->setValidationRules($getRule);
-
-       
-            // Validasi berhasil, update data
-            if (!$model->update($id['id_Obat'], $dataObat)) {
-                return redirect()->to("/dashboard/dataObat")->withInput()->with('errors', $model->errors());
-            }
-
-            // Commit transaksi jika berhasil
-            $model->transComplete();
-            return redirect()->to("/dashboard/dataObat");
-
-            // Tidak perlu redirect, bisa langsung render view atau response lainnya
-
-      
+    
+        if (!$model->update($id['id_Obat'], $dataObat)) {
+            $model->transRollback(); // Rollback transaksi jika terjadi kesalahan
+            return redirect()->to("/dashboard/dataObat")->withInput()->with('errors', $model->errors());
+        }
+    
+        $model->transComplete();
+        return redirect()->to("/dashboard/dataObat")->with('success', 'Data updated successfully.');
     }
+    
 
     public function delete(int $id)
     {
@@ -95,7 +91,7 @@ class DataObat extends BaseController
 
             // Commit transaksi jika berhasil
             $model->transComplete();
-            return redirect()->to("/dashboard/dataObat");
+            return redirect()->to("/dashboard/dataObat")->with('success', 'Data delete successfully.');
 
             // Tidak perlu redirect, bisa langsung render view atau response lainnya
     }

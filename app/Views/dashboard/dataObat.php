@@ -27,19 +27,42 @@
             <div class="card-header">
                 <h4 class="card-title">Tambah Obat</h4>
             </div>
+            <!-- View: contoh_view.php -->
+
+<!-- Tampilkan pesan kesalahan jika ada -->
+<?php $errorMessage = session('errors'); ?>
+<?php if ($errorMessage): ?>
+    <div class="alert alert-danger">
+    <?php foreach ($errorMessage as $error): ?>
+            <?= esc($error) ?><br>
+        <?php endforeach; ?>
+    </div>
+        
+<?php endif; ?>
+<!--  -->
+
+<!-- Tampilkan pesan sukses jika ada -->
+<?php $successMessage = session('success'); ?>
+<?php if ($successMessage): ?>
+    <div class="alert alert-success">
+            <?= esc($successMessage) ?><br>
+    </div>
+<?php endif; ?>
+<!--  -->
+
+
             
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
                     <form method="post" action="/dashboard/dataObat/add">
-
                         <div class="form-group">
                             <label for="basicNama">Nama</label>
-                            <input type="text" class="form-control" id="basicNama" name="nama" placeholder="Enter nama obat">
+                            <input type="text" class="form-control <?= $errorMessage ? 'is-invalid' : '' ?>" id="basicNama" name="nama" placeholder="Enter nama obat">
                         </div>
                         <div class="form-group">
                             <label for="basicJenis">Jenis</label>
-                            <input type="text" class="form-control" id="basicJenis" name="jenis" placeholder="Enter jenis obat">
+                            <input type="text" class="form-control <?= $errorMessage ? 'is-invalid' : '' ?>" id="basicJenis" name="jenis" placeholder="Enter jenis obat">
                         </div>
                         <div class="form-group">
                             <label for="basicSelect">Status</label>
@@ -53,6 +76,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Tambah</button>
                         <button type="reset" class="btn btn-danger">Reset</button>
+                        
                     </form>
                     </div>
                 </div>
@@ -117,17 +141,17 @@
                             <div class="modal-body">
                                 <label>Nama: </label>
                                 <div class="form-group">
-                                <input type="hidden" name="id_ObatUp" value="<?= $obat['id_Obat']; ?>">
-                                <input type="text" value="<?= esc($obat['nama']); ?>" name="namaUp" class="form-control">
+                                <input type="hidden" name="id_Obat" value="<?= $obat['id_Obat']; ?>">
+                                <input type="text" value="<?= esc($obat['nama']); ?>" name="nama" class="form-control">
                                 </div>
                                 <label>Jenis </label>
                                 <div class="form-group">
-                                <input type="text" value="<?= esc($obat['jenis']); ?>" name="jenisUp" class="form-control">
+                                <input type="text" value="<?= esc($obat['jenis']); ?>" name="jenis" class="form-control">
                                 </div>
                                 <div class="form-group">
                             <label for="basicSelect">Status</label>
                             <fieldset class="form-group">
-                                        <select class="form-select" name="statusUp" id="basicSelect">
+                                        <select class="form-select" name="status" id="basicSelect">
                                             <option value='<span class="badge bg-success">Tersedia</span>'>Tersedia</option>
                                             <option value='<span class="badge bg-warning">Terjual</span>'>Terjual</option>
                                             <option value='<span class="badge bg-danger">Kadaluarsa</span>'>Kadaluarsa</option>
@@ -159,26 +183,39 @@
             <!-- end modal -->
 
             <!-- Modal delete -->
-<div class="modal fade" id="delete<?= $obat['id_Obat']; ?>" tabindex="-1" aria-labelledby="myModalLabel33" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Anda yakin ingin menghapus?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">Close</button>
-        <form action="/dashboard/dataObat/delete/<?= $obat['id_Obat']; ?>" method="post" class="d-inline">
+<!--  -->
+<div class="modal fade text-left" id="delete<?= $obat['id_Obat']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1"
+                        aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="myModalLabel1">Delete</h5>
+                                        <button type="button" class="close rounded-pill" data-bs-dismiss="modal" aria-label="Close">
+                                            <i data-feather="x"></i>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                        Yakin Ingin Menghapus?
+                                        </p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn" data-bs-dismiss="modal">
+                                            <i class="bx bx-x d-block d-sm-none"></i>
+                                            <span class="d-none d-sm-block">Close</span>
+                                        </button>
+                                        <form action="/dashboard/dataObat/delete/<?= $obat['id_Obat']; ?>" method="post" class="d-inline">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="btn icon btn-danger">Delete</button>
                             </form>
-      </div>
-    </div>
-  </div>
-</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
                         <?php endforeach; ?>
                     </tbody>
                 </table>
