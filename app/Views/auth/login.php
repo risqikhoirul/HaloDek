@@ -44,12 +44,7 @@
                             </div>
                         </div>
                         <div class="form-group position-relative has-icon-left">
-                            <div class="clearfix">
-                                <label for="password">Password</label>
-                                <a href="auth-forgot-password.html" class='float-end'>
-                                    <small>Forgot password?</small>
-                                </a>
-                            </div>
+                            
                             <div class="position-relative">
                                 <input type="password" name="password" class="form-control <?= $errorMessage ? 'is-invalid' : '' ?>" id="password">
                                 <div class="form-control-icon">
