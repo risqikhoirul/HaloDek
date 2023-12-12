@@ -13,6 +13,7 @@
 
 <body>
     <div id="auth">
+
         
 <div class="container">
     <div class="row">
@@ -24,6 +25,13 @@
                         <h3>Sign In</h3>
                         <p>Please sign in to continue to Voler.</p>
                     </div>
+                    <?php $errorMessage = session('error'); ?>
+<?php if ($errorMessage): ?>
+    <div class="alert alert-danger">
+            <?= esc($errorMessage) ?><br>
+    </div>
+        
+<?php endif; ?>
                     <form method="post" action="<?= route_to('auth.login'); ?>">
                     
                         <div class="form-group position-relative has-icon-left">
@@ -49,31 +57,10 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class='form-check clearfix my-4'>
-                            <div class="checkbox float-start">
-                                <input type="checkbox" id="checkbox1" class='form-check-input' >
-                                <label for="checkbox1">Remember me</label>
-                            </div>
-                            <div class="float-end">
-                                <a href="auth-register.html">Don't have an account?</a>
-                            </div>
-                        </div>
                         <div class="clearfix">
-                            <button type="submit" class="btn btn-primary float-end">Submit</button>
+                            <button type="submit" class="btn btn-primary float-end">Login</button>
                         </div>
                     </form>
-                    <div class="divider">
-                        <div class="divider-text">OR</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <button class="btn btn-block mb-2 btn-primary"><i data-feather="facebook"></i> Facebook</button>
-                        </div>
-                        <div class="col-sm-6">
-                            <button class="btn btn-block mb-2 btn-secondary"><i data-feather="github"></i> Github</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

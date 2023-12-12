@@ -39,7 +39,7 @@ class Login extends BaseController
         
         if ( is_null($user) || ! password_verify($this->request->getPost('password'), $user['password']) ) 
         {
-            return redirect()->to('/auth/login')->withInput()->with('error', $users->errors());
+            return redirect()->to('/auth/login')->withInput()->with('error', 'Username atau Password Salah');
         }
         
         $this->session->set('isLoggedIn', true);
