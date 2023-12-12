@@ -53,12 +53,12 @@ class DataObat extends BaseController
 
                 // Tangkap data dari form
         $id = [
-            "id_Obat" => $this->request->getPost('id_Obat'),
+            "id_Obat" => $this->request->getPost('id_ObatUp'),
         ];
         $dataObat = [
-            "nama" => $this->request->getPost('nama'),
-            "status" => $this->request->getPost('status'),
-            "jenis" => $this->request->getPost('jenis'),
+            "nama" => $this->request->getPost('namaUp'),
+            "status" => $this->request->getPost('statusUp'),
+            "jenis" => $this->request->getPost('jenisUp'),
         ];
         
 
@@ -69,7 +69,7 @@ class DataObat extends BaseController
 
        
             // Validasi berhasil, update data
-            if (!$model->update($id[0], $dataObat)) {
+            if (!$model->update($id['id_Obat'], $dataObat)) {
                 return redirect()->to("/dashboard/dataObat")->withInput()->with('errors', $model->errors());
             }
 

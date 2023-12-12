@@ -17,10 +17,10 @@ $routes->get('/blog', 'BlogKesehatan::index');
 // Dashboard routes
 $routes->get('/dashboard', 'Dashboard\Index::index');
 $routes->get('/dashboard/dataObat', 'Dashboard\DataObat::index');
-$routes->post('/dashboard/dataObat', 'Dashboard\DataObat::add');
-$routes->post('/dashboard/dataObat', 'Dashboard\DataObat::update');
-$routes->post('/dashboard/dataObat/(:num)', 'Dashboard\DataObat::update/$1');
-$routes->delete('/dashboard/dataObat/(:num)', 'Dashboard\DataObat::delete/$1');
+$routes->post('/dashboard/dataObat/add', 'Dashboard\DataObat::add');
+$routes->post('/dashboard/dataObat/update', 'Dashboard\DataObat::update');
+// $routes->post('/dashboard/dataObat/(:num)', 'Dashboard\DataObat::update/$1');
+$routes->delete('/dashboard/dataObat/delete/(:num)', 'Dashboard\DataObat::delete/$1');
 
 // Authentication routes
 $routes->get('/auth/login', 'Auth\Login::index');

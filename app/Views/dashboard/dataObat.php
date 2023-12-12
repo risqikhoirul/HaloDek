@@ -31,7 +31,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                    <form method="post" action="<?= route_to('dashboard.dataObat.add') ?>">
+                    <form method="post" action="/dashboard/dataObat/add">
 
                         <div class="form-group">
                             <label for="basicNama">Nama</label>
@@ -90,12 +90,13 @@
   <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
   <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
 </svg></button>
-                            <form action="/dashboard/dataObat/<?= $obat['id_Obat']; ?>" method="post" class="d-inline">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit" class="btn icon btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
+                            <!-- Button trigger modal delete -->
+
+                            <button type="button" class="btn icon btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?= $obat['id_Obat']; ?>">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
   <path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8H.8z"/>
 </svg></button>
-                            </form>
+                            
                         </td>
                             
                         </tr>
@@ -112,21 +113,21 @@
                                 <i data-feather="x"></i>
                             </button>
                             </div>
-                            <form method="post" action="<?= route_to('dashboard.dataObat.update')?>">
+                            <form method="post" action="/dashboard/dataObat/update">
                             <div class="modal-body">
                                 <label>Nama: </label>
                                 <div class="form-group">
-                                <input type="hidden" name="id_Obat" value="<?= $obat['id_Obat']; ?>">
-                                <input type="text" value="<?= esc($obat['nama']); ?>" name="nama" class="form-control">
+                                <input type="hidden" name="id_ObatUp" value="<?= $obat['id_Obat']; ?>">
+                                <input type="text" value="<?= esc($obat['nama']); ?>" name="namaUp" class="form-control">
                                 </div>
                                 <label>Jenis </label>
                                 <div class="form-group">
-                                <input type="text" value="<?= esc($obat['nama']); ?>" name="jenis" class="form-control">
+                                <input type="text" value="<?= esc($obat['jenis']); ?>" name="jenisUp" class="form-control">
                                 </div>
                                 <div class="form-group">
                             <label for="basicSelect">Status</label>
                             <fieldset class="form-group">
-                                        <select class="form-select" name="status" id="basicSelect">
+                                        <select class="form-select" name="statusUp" id="basicSelect">
                                             <option value='<span class="badge bg-success">Tersedia</span>'>Tersedia</option>
                                             <option value='<span class="badge bg-warning">Terjual</span>'>Terjual</option>
                                             <option value='<span class="badge bg-danger">Kadaluarsa</span>'>Kadaluarsa</option>
@@ -156,6 +157,28 @@
             </div>
             </div>
             <!-- end modal -->
+
+            <!-- Modal delete -->
+<div class="modal fade" id="delete<?= $obat['id_Obat']; ?>" tabindex="-1" aria-labelledby="myModalLabel33" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Anda yakin ingin menghapus?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">Close</button>
+        <form action="/dashboard/dataObat/delete/<?= $obat['id_Obat']; ?>" method="post" class="d-inline">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn icon btn-danger">Delete</button>
+                            </form>
+      </div>
+    </div>
+  </div>
+</div>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
