@@ -122,7 +122,7 @@
                             <th>No</th>
                             <th>Nama</th>
                             <th>Jenis</th>
-                            <th>Status</th>
+                            <th>Jumlah</th>
                             
                         </tr>
                     </thead>
@@ -133,7 +133,7 @@
                             <td><?= $i++ ?></td>
                             <td><?= esc($obat['nama']); ?></td>
                             <td><?= esc($obat['jenis']); ?></td>
-                            <td><?= $obat['status']; ?></td>
+                            <td><?= $obat['jumlah']; ?></td>
                         <?php endforeach; ?>
                     </tbody>
                             </table>

@@ -12,15 +12,25 @@ $routes->get('/cekbmi', 'Bmi::index');
 $routes->get('/carirs', 'Carirs::index');
 $routes->get('/ambulan', 'Ambulan::index');
 $routes->get('/kesehatan', 'Kesehatan::index');
-$routes->get('/blog', 'BlogKesehatan::index');
 
-// Dashboard routes
+// Dashboard data obat
 $routes->get('/dashboard', 'Dashboard\Index::index');
 $routes->get('/dashboard/dataObat', 'Dashboard\DataObat::index');
 $routes->post('/dashboard/dataObat/add', 'Dashboard\DataObat::add');
 $routes->post('/dashboard/dataObat/update', 'Dashboard\DataObat::update');
-// $routes->post('/dashboard/dataObat/(:num)', 'Dashboard\DataObat::update/$1');
 $routes->delete('/dashboard/dataObat/delete/(:num)', 'Dashboard\DataObat::delete/$1');
+
+// Dashboard data pasien
+$routes->get('/dashboard/dataPasien', 'Dashboard\DataPasien::index');
+$routes->post('/dashboard/dataPasien/add', 'Dashboard\DataPasien::add');
+$routes->post('/dashboard/dataPasien/update', 'Dashboard\DataPasien::update');
+$routes->delete('/dashboard/dataPasien/delete/(:num)', 'Dashboard\DataPasien::delete/$1');
+
+// Dashboard data pasien
+$routes->get('/dashboard/blog', 'Dashboard\Blog::index');
+$routes->post('/dashboard/blog/add', 'Dashboard\blog::add');
+$routes->post('/dashboard/blog/update', 'Dashboard\blog::update');
+$routes->delete('/dashboard/blog/delete/(:num)', 'Dashboard\blog::delete/$1');
 
 // Authentication routes
 $routes->get('/auth/login', 'Auth\Login::index');

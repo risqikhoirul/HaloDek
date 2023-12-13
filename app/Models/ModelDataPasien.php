@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ModelDataObat extends Model
+class ModelDataPasien extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'dataObat';
-    protected $primaryKey       = 'id_Obat';
+    protected $table            = 'dataPasien';
+    protected $primaryKey       = 'id_Pasien';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nama', 'jenis', 'jumlah'];
+    protected $allowedFields    = ['nama', 'alamat', 'riwayat'];
 
     // Dates
     protected $useTimestamps = false;
@@ -25,21 +25,21 @@ class ModelDataObat extends Model
     // Validation
     protected $validationRules      = [
         'nama' => 'required|max_length[20]',
-        'jenis' => 'required|max_length[20]',
-        'jumlah' => 'required|max_length[5]',
+        'alamat' => 'required|max_length[50]',
+        'riwayat' => 'required|max_length[20]',
     ];
     protected $validationMessages   = [
         'nama'	=> [
             'required'		=> 'Nama Harus di Isi',
             'max_length'	=> 'Nama Maximal 20 Karakter'
     ],
-        'jenis'	=> [
+        'alamat'	=> [
+            'required'		=> 'Jenis Harus di Isi',
+            'max_length'	=> 'Jenis Maximal 50 Karakter'
+],
+        'riwayat'	=> [
             'required'		=> 'Jenis Harus di Isi',
             'max_length'	=> 'Jenis Maximal 20 Karakter'
-],
-        'jumlah'	=> [
-            'required'		=> 'Jenis Harus di Isi',
-            'max_length'	=> 'Jenis Maximal 5 Karakter'
 ],
 ];
     protected $skipValidation       = false;

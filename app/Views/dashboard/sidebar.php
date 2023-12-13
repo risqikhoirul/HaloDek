@@ -40,13 +40,19 @@
                 </li>
 
                 <li class="sidebar-item  ">
-
                     <a href="/dashboard/dataObat" class='sidebar-link'>
                         <i data-feather="file-plus" width="20"></i> 
                         <span>Obat</span>
-                    </a>
-
-                    
+                    </a> 
+                </li>
+                <li class="sidebar-item  ">
+                    <a href="/dashboard/dataPasien" class='sidebar-link'>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-add" viewBox="0 0 16 16">
+  <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+  <path d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
+</svg> 
+                        <span>Pasien</span>
+                    </a> 
                 </li>
         </ul>
     </div>
@@ -68,22 +74,6 @@
                                     <i data-feather="bell"></i>
                                 </div>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-large">
-                                <h6 class='py-2 px-4'>Notifications</h6>
-                                <ul class="list-group rounded-none">
-                                    <li class="list-group-item border-0 align-items-start">
-                                        <div class="avatar bg-success me-3">
-                                            <span class="avatar-content"><i data-feather="shopping-cart"></i></span>
-                                        </div>
-                                        <div>
-                                            <h6 class='text-bold'>New Order</h6>
-                                            <p class='text-xs'>
-                                                An order made by Ahmad Saugi for product Samsung Galaxy S69
-                                            </p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
                         </li>
                        
                         <li class="dropdown">

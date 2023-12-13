@@ -4,9 +4,9 @@ namespace App\Controllers\Dashboard;
 
 use App\Controllers\BaseController;
 use Config\Services;
-use App\Models\ModelDataObat;
+use App\Models\ModelDataPasien;
 
-class DataObat extends BaseController
+class DataPasien extends BaseController
 {
     protected $session;
     public function __construct()
@@ -20,22 +20,22 @@ class DataObat extends BaseController
             return redirect()->to('/auth/login');
         }
         
-        $model = new ModelDataObat();
+        $model = new ModelDataPasien();
         $data = [
-            'getObat' => $model->findAll(),
-            'title' => 'Data Obat',
+            'getPasiens' => $model->findAll(),
+            'title' => 'Data Pasien',
         ];
-        return view('dashboard/dataObat', $data);
+        return view('dashboard/dataPasien', $data);
     }
 
     public function add()
     {
-        $model = new ModelDataObat();
+        $model = new ModelDataPasien();
     
-        $dataObat = [
+        $dataPasien = [
             "nama" => $this->request->getPost('nama'),
-            "jumlah" => $this->request->getPost('jumlah'),
-            "jenis" => $this->request->getPost('jenis'),
+            "alamat" => $this->request->getPost('alamat'),
+            "riwayat" => $this->request->getPost('riwayat'),
         ];
     
         $model->transStart();
@@ -43,24 +43,24 @@ class DataObat extends BaseController
         $getRule = $model->getRule();
         $model->setValidationRules($getRule);
     
-        if (!$model->insert($dataObat)) {
+        if (!$model->insert($dataPasien)) {
             $model->transRollback(); // Rollback transaksi jika terjadi kesalahan
-            return redirect()->to("/dashboard/dataObat")->withInput()->with('errors', $model->errors());
+            return redirect()->to("/dashboard/dataPasien")->withInput()->with('errors', $model->errors());
         }
     
         $model->transComplete();
-        return redirect()->to("/dashboard/dataObat")->with('success', 'Data added successfully.');
+        return redirect()->to("/dashboard/dataPasien")->with('success', 'Data added successfully.');
     }
     
     public function update()
     {
-        $model = new ModelDataObat();
+        $model = new ModelDataPasien();
     
-        $id = ["id_Obat" => $this->request->getPost('id_Obat')];
-        $dataObat = [
+        $id = ["id_Pasien" => $this->request->getPost('id_Pasien')];
+        $dataPasien = [
             "nama" => $this->request->getPost('nama'),
-            "jumlah" => $this->request->getPost('jumlah'),
-            "jenis" => $this->request->getPost('jenis'),
+            "alamat" => $this->request->getPost('alamat'),
+            "riwayat" => $this->request->getPost('riwayat'),
         ];
     
         $model->transStart();
@@ -68,30 +68,30 @@ class DataObat extends BaseController
         $getRule = $model->getRule();
         $model->setValidationRules($getRule);
     
-        if (!$model->update($id['id_Obat'], $dataObat)) {
+        if (!$model->update($id['id_Pasien'], $dataPasien)) {
             $model->transRollback(); // Rollback transaksi jika terjadi kesalahan
-            return redirect()->to("/dashboard/dataObat")->withInput()->with('errors', $model->errors());
+            return redirect()->to("/dashboard/dataPasien")->withInput()->with('errors', $model->errors());
         }
     
         $model->transComplete();
-        return redirect()->to("/dashboard/dataObat")->with('success', 'Data updated successfully.');
+        return redirect()->to("/dashboard/dataPasien")->with('success', 'Data updated successfully.');
     }
     
 
     public function delete(int $id)
     {
         // Memulai transaksi
-        $model = new ModelDataObat();
+        $model = new ModelDataPasien();
         $model->transStart();
 
             // Hapus data
             if (!$model->delete($id)) {
-                return redirect()->to("/dashboard/dataObat")->with('error', 'Delete failed.');
+                return redirect()->to("/dashboard/dataPasien")->with('error', 'Delete failed.');
             }
 
             // Commit transaksi jika berhasil
             $model->transComplete();
-            return redirect()->to("/dashboard/dataObat")->with('success', 'Data delete successfully.');
+            return redirect()->to("/dashboard/dataPasien")->with('success', 'Data delete successfully.');
 
             // Tidak perlu redirect, bisa langsung render view atau response lainnya
     }
