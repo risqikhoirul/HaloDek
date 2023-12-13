@@ -1,7 +1,15 @@
 
 <?= $this->extend('dashboard/sidebar'); ?>
 <?= $this->section('content'); ?>
+<?php
+// Asumsikan $getObat adalah sebuah array dari item-item obat
+$totalJumlah = 0;
+$jumlahPasien = count($getPasien);
 
+foreach ($getObat as $obat) {
+    $totalJumlah += $obat['jumlah'];
+}
+?>
 
 <div class="main-content container-fluid">
     <div class="page-title">
@@ -17,7 +25,7 @@
                             <div class='px-3 py-3 d-flex justify-content-between'>
                                 <h3 class='card-title'>Jumlah Obat</h3>
                                 <div class="card-right d-flex align-items-center">
-                                    <p>500 </p>
+                                    <p><?= $totalJumlah; ?> </p>
                                 </div>
                             </div>
                             <div class="chart-wrapper">
@@ -32,9 +40,9 @@
                     <div class="card-body p-0">
                         <div class="d-flex flex-column">
                             <div class='px-3 py-3 d-flex justify-content-between'>
-                                <h3 class='card-title'>Obat Terjual</h3>
+                                <h3 class='card-title'>Jumlah Pasien</h3>
                                 <div class="card-right d-flex align-items-center">
-                                    <p>300 </p>
+                                    <p><?= $jumlahPasien; ?> </p>
                                 </div>
                             </div>
                             <div class="chart-wrapper">
@@ -109,9 +117,9 @@
                 </div>
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4 class="card-title">Orders Today</h4>
+                        <h4 class="card-title">Data Obat</h4>
                         <div class="d-flex ">
-                            <i data-feather="download"></i>
+                            <!-- <i data-feather="download"></i> -->
                         </div>
                     </div>
                     <div class="card-body px-0 pb-0">
@@ -223,5 +231,6 @@
 
         </div>
     </div>
+
 
     <?= $this->endSection(); ?>
