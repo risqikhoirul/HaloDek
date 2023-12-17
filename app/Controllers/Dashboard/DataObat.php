@@ -26,6 +26,7 @@ class DataObat extends BaseController
         $data = [
             'getObat' => $model->findAll(),
             'getPegawai' => $modelUser->findAll(),
+            'getPegawais' => $modelUser->findAll(),
             'usr' => $this->session->username,
             'title' => 'Data Obat',
         ];

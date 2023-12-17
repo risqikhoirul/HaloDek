@@ -28,6 +28,8 @@ class Index extends BaseController
             'getObat' => $modelObat->findAll(),
             'getPasien' => $modelPasien->findAll(),
             'getPegawai' => $modelUser->findAll(),
+            'getPegawais' => $modelUser->findAll(),
+            'totalPegawaiCount' => count($modelUser->where('level !=', 'admin')->findAll()),
             'usr' => $this->session->username,
             'title'=> 'Dashboard',
         ];

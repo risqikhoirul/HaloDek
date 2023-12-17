@@ -26,7 +26,7 @@ $routes->post('/dashboard/dataPasien/add', 'Dashboard\DataPasien::add');
 $routes->post('/dashboard/dataPasien/update', 'Dashboard\DataPasien::update');
 $routes->delete('/dashboard/dataPasien/delete/(:num)', 'Dashboard\DataPasien::delete/$1');
 
-// Dashboard data pasien
+// Dashboard data pegawai
 $routes->get('/dashboard/pegawai', 'Dashboard\Pegawai::index');
 $routes->post('/dashboard/pegawai/tambah', 'Dashboard\Pegawai::tambah');
 $routes->post('/dashboard/pegawai/ubah', 'Dashboard\Pegawai::ubah');

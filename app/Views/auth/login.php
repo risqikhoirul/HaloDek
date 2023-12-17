@@ -33,7 +33,7 @@
         
 <?php endif; ?>
                     <form method="post" action="<?= route_to('auth.login'); ?>">
-                    
+                    <?= csrf_field() ?>
                         <div class="form-group position-relative has-icon-left">
                             <label for="username">Username</label>
                             <div class="position-relative">

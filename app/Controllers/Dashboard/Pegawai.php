@@ -20,20 +20,38 @@ class Pegawai extends BaseController
         if (!$this->session->isLoggedIn) {
             return redirect()->to('/auth/login');
         }
+
         $model = new ModelUser();
+        $level = $model->findAll();
+        $usr = $this->session->username;
+        $isLevel = false;
+
+foreach ($level as $pegawai) {
+    // Mengecek apakah username dan level cocok
+    if ($pegawai['username'] == $usr && $pegawai['level'] == 'pegawai') {
+        // Jika cocok, menyimpan data pegawai yang ditemukan
+        $isLevel = true;
+        // Keluar dari loop karena sudah ditemukan
+        break;
+    }
+}
+        if($isLevel){
+            return redirect()->to('/dashboard');
+        }
         
         $data = [
-            'usr' => $this->session->username,
-            'getPegawai' => $model->findAll(),
+            'usr' => $usr,
+            'getPegawai' => $model->where('level !=', 'admin')->findAll(),
+            'getPegawais' => $model->findAll(),
             'title' => 'Data Pegawai',
         ];
         return view('/dashboard/pegawai', $data);
     }
     public function tambah()
     {
-        $user = new ModelUser();
-        $getRule = $user->getRule();
-        $user->setValidationRules($getRule);
+        $model = new ModelUser();
+        $getRule = $model->getRule();
+        $model->setValidationRules($getRule);
         
         $dataPegawai = [
             'firstname'         => $this->request->getPost('firstname'),
@@ -45,17 +63,17 @@ class Pegawai extends BaseController
             'level'  => 'pegawai'
         ];
 
-        if (!$user->insert($dataPegawai)) {
-            return redirect()->to("/dashboard/pegawai")->withInput()->with('errors', $user->errors());
+        if (!$model->insert($dataPegawai)) {
+            return redirect()->to("/dashboard/pegawai")->withInput()->with('errors', $model->errors());
         }
 
         return redirect()->to("/dashboard/pegawai")->with('success', 'Sukses Menambah Data Pegawai');
     }
     public function ubah()
     {
-        $user = new ModelUser();
-        $getRule = $user->getRule();
-        $user->setValidationRules($getRule);
+        $model = new ModelUser();
+        $getRule = $model->getRule();
+        $model->setValidationRules($getRule);
         $dataPegawai = [
             'firstname'         => $this->request->getPost('firstname'),
             'lastname'          => $this->request->getPost('lastname'),
@@ -65,14 +83,14 @@ class Pegawai extends BaseController
             'password_confirm'  => $this->request->getPost('password_confirm'),
         ];
 
-        if (!$user->update($id, $dataPegawai)) {
-            return redirect()->to("/dashboard/pegawai")->withInput()->with('errors', $user->errors());
+        if (!$model->update($id, $dataPegawai)) {
+            return redirect()->to("/dashboard/pegawai")->withInput()->with('errors', $model->errors());
         }
         return redirect()->to("/dashboard/pegawai")->with('success', 'Sukses Mengubah Data Pegawai');
     }
-    public function delete(int $id)
+    public function hapus(int $id)
     {
-        $user = new ModelUser();
+        $model = new ModelUser();
         $model->transStart();
 
             // Hapus data

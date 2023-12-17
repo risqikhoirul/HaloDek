@@ -9,6 +9,9 @@ $jumlahPasien = count($getPasien);
 foreach ($getObat as $obat) {
     $totalJumlah += $obat['jumlah'];
 }
+
+// $jumlahPegawai = count($totalPegawai);
+// var_dump($totalPegawai);
 ?>
 
 <div class="main-content container-fluid">
@@ -18,7 +21,7 @@ foreach ($getObat as $obat) {
     </div>
     <section class="section">
         <div class="row mb-2">
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-6">
                 <div class="card card-statistic">
                     <div class="card-body p-0">
                         <div class="d-flex flex-column">
@@ -35,7 +38,7 @@ foreach ($getObat as $obat) {
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-6">
                 <div class="card card-statistic">
                     <div class="card-body p-0">
                         <div class="d-flex flex-column">
@@ -52,14 +55,14 @@ foreach ($getObat as $obat) {
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-3">
+            <!-- <div class="col-12 col-md-3">
                 <div class="card card-statistic">
                     <div class="card-body p-0">
                         <div class="d-flex flex-column">
                             <div class='px-3 py-3 d-flex justify-content-between'>
-                                <h3 class='card-title'>Obat Tersisa</h3>
+                                <h3 class='card-title'>Jumlah Pegawai</h3>
                                 <div class="card-right d-flex align-items-center">
-                                    <p>150 </p>
+                                    <p><?php $totalJumlah; ?></p>
                                 </div>
                             </div>
                             <div class="chart-wrapper">
@@ -68,8 +71,8 @@ foreach ($getObat as $obat) {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 col-md-3">
+            </div> -->
+            <!-- <div class="col-12 col-md-3">
                 <div class="card card-statistic">
                     <div class="card-body p-0">
                         <div class="d-flex flex-column">
@@ -85,7 +88,7 @@ foreach ($getObat as $obat) {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="row mb-4">
             <div class="col-md-8">

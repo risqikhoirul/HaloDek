@@ -26,6 +26,7 @@ class DataPasien extends BaseController
         $data = [
             'getPasiens' => $model->findAll(),
             'getPegawai' => $modelUser->findAll(),
+            'getPegawais' => $modelUser->findAll(),
             'usr' => $this->session->username,
             'title' => 'Data Pasien',
         ];

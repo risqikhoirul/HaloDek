@@ -45,6 +45,7 @@ class Login extends BaseController
         $this->session->set('isLoggedIn', true);
         $this->session->set('username', $user['username']);
         
+        
         return redirect()->to('dashboard');
     }
 
