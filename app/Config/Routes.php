@@ -27,10 +27,10 @@ $routes->post('/dashboard/dataPasien/update', 'Dashboard\DataPasien::update');
 $routes->delete('/dashboard/dataPasien/delete/(:num)', 'Dashboard\DataPasien::delete/$1');
 
 // Dashboard data pasien
-$routes->get('/dashboard/blog', 'Dashboard\Blog::index');
-$routes->post('/dashboard/blog/add', 'Dashboard\blog::add');
-$routes->post('/dashboard/blog/update', 'Dashboard\blog::update');
-$routes->delete('/dashboard/blog/delete/(:num)', 'Dashboard\blog::delete/$1');
+$routes->get('/dashboard/pegawai', 'Dashboard\Pegawai::index');
+$routes->post('/dashboard/pegawai/tambah', 'Dashboard\Pegawai::tambah');
+$routes->post('/dashboard/pegawai/ubah', 'Dashboard\Pegawai::ubah');
+$routes->delete('/dashboard/pegawai/hapus/(:num)', 'Dashboard\Pegawai::hapus/$1');
 
 // Authentication routes
 $routes->get('/auth/login', 'Auth\Login::index');

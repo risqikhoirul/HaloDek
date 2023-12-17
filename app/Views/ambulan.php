@@ -176,4 +176,4 @@
 </ul>
 
     
-    <?= $this->endSection(); ?>s
+    <?= $this->endSection(); ?>

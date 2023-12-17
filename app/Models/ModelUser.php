@@ -13,7 +13,7 @@ class ModelUser extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['username', 'password'];
+    protected $allowedFields    = ['firstname', 'lastname', 'username', 'email', 'password', 'level'];
 
     // Dates
     protected $useTimestamps = false;
@@ -26,14 +26,36 @@ class ModelUser extends Model
     protected $cleanValidationRules = true;
 
     // Callbacks
-    protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
-    protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
-    protected $afterUpdate    = [];
-    protected $beforeFind     = [];
-    protected $afterFind      = [];
-    protected $beforeDelete   = [];
-    protected $afterDelete    = [];
+    protected $validationRules      = [
+        'firstname' => 'required|min_length[3]',
+        'lastname'  => 'required|min_length[3]',
+        'username'  => 'required|min_length[5]|is_unique[tb_user.username,id_user]',
+        'email'  => 'required|min_length[3]',
+        'password'  => 'required|min_length[5]'
+    ];
+
+    protected $beforeInsert = ['hashPassword'];
+    protected $beforeUpdate = ['hashPassword'];
+
+    public function getData()
+    {
+        $users = new ModelUser();
+        $datausers = $users->findAll();
+        
+        return $datausers;
+    }
+
+    public function getRule()
+    {
+        return $this->validationRules;        
+    }    
+
+    protected function hashPassword(array $data)
+    {
+        if (! isset($data['data']['password'])) return $data;
+        $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
+
+        return $data;
+    }
     
 }

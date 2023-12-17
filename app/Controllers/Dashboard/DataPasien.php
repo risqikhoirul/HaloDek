@@ -5,6 +5,7 @@ namespace App\Controllers\Dashboard;
 use App\Controllers\BaseController;
 use Config\Services;
 use App\Models\ModelDataPasien;
+use App\Models\ModelUser;
 
 class DataPasien extends BaseController
 {
@@ -21,8 +22,11 @@ class DataPasien extends BaseController
         }
         
         $model = new ModelDataPasien();
+        $modelUser = new ModelUser();
         $data = [
             'getPasiens' => $model->findAll(),
+            'getPegawai' => $modelUser->findAll(),
+            'usr' => $this->session->username,
             'title' => 'Data Pasien',
         ];
         return view('dashboard/dataPasien', $data);

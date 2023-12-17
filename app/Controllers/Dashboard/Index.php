@@ -5,6 +5,7 @@ use App\Controllers\BaseController;
 use Config\Services;
 use App\Models\ModelDataObat;
 use App\Models\ModelDataPasien;
+use App\Models\ModelUser;
 
 class Index extends BaseController
 {
@@ -22,9 +23,12 @@ class Index extends BaseController
             
         $modelObat = new ModelDataObat();
         $modelPasien = new ModelDataPasien();
+        $modelUser = new ModelUser();
         $data = [
             'getObat' => $modelObat->findAll(),
             'getPasien' => $modelPasien->findAll(),
+            'getPegawai' => $modelUser->findAll(),
+            'usr' => $this->session->username,
             'title'=> 'Dashboard',
         ];
         return view('dashboard/index', $data);

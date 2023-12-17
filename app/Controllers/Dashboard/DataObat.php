@@ -5,6 +5,7 @@ namespace App\Controllers\Dashboard;
 use App\Controllers\BaseController;
 use Config\Services;
 use App\Models\ModelDataObat;
+use App\Models\ModelUser;
 
 class DataObat extends BaseController
 {
@@ -21,8 +22,11 @@ class DataObat extends BaseController
         }
         
         $model = new ModelDataObat();
+        $modelUser = new ModelUser();
         $data = [
             'getObat' => $model->findAll(),
+            'getPegawai' => $modelUser->findAll(),
+            'usr' => $this->session->username,
             'title' => 'Data Obat',
         ];
         return view('dashboard/dataObat', $data);
