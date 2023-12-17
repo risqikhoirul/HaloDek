@@ -22,27 +22,13 @@ class Pegawai extends BaseController
         }
 
         $model = new ModelUser();
-        $level = $model->findAll();
-        $usr = $this->session->username;
-        $isLevel = false;
-
-foreach ($level as $pegawai) {
-    // Mengecek apakah username dan level cocok
-    if ($pegawai['username'] == $usr && $pegawai['level'] == 'pegawai') {
-        // Jika cocok, menyimpan data pegawai yang ditemukan
-        $isLevel = true;
-        // Keluar dari loop karena sudah ditemukan
-        break;
-    }
-}
-        if($isLevel){
+        $isLevel = $this->session->level;
+        if($isLevel == 'pegawai'){
             return redirect()->to('/dashboard');
         }
         
         $data = [
-            'usr' => $usr,
             'getPegawai' => $model->where('level !=', 'admin')->findAll(),
-            'getPegawais' => $model->findAll(),
             'title' => 'Data Pegawai',
         ];
         return view('/dashboard/pegawai', $data);

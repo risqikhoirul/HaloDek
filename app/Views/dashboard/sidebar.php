@@ -52,20 +52,8 @@
                     </a> 
                 </li>
                 <?php
-$isAdmin = false;
-// echo var_dump($getPegawai);
-// echo var_dump($test);
-foreach ($getPegawais as $pegawai) {
-    // Mengecek apakah username dan level cocok
-    if ($pegawai['username'] == $usr && $pegawai['level'] == 'admin') {
-        // Jika cocok, menyimpan data pegawai yang ditemukan
-        $isAdmin = true;
-        // Keluar dari loop karena sudah ditemukan
-        break;
-    }
-}
-
-if ($isAdmin) {
+$isLevel = session()->get('level');
+if ($isLevel == 'admin') {
     // Render the sidebar item
     echo ' <li class="sidebar-item  ">
     <a href="/dashboard/pegawai" class="sidebar-link">
