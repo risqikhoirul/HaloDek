@@ -36,3 +36,7 @@ $routes->delete('/dashboard/pegawai/hapus/(:num)', 'Dashboard\Pegawai::hapus/$1'
 $routes->get('/auth/login', 'Auth\Login::index');
 $routes->post('/auth/login', 'Auth\Login::login');
 $routes->get('/auth/logout', 'Auth\Login::logout');
+
+$routes->get('/dashboard/profil', 'Dashboard\Profil::index');
+$routes->get('/dashboard/setting', 'Dashboard\Setting::index');
+$routes->post('/dashboard/setting/update', 'Dashboard\Setting::update');
