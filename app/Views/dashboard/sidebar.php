@@ -15,8 +15,8 @@
 <div id="app">
         <div id="sidebar" class='active'>
             <div class="sidebar-wrapper active">
-    <div class="sidebar-header">
-    <img src="<?= base_url("assets/images/logo.svg"); ?>" alt="" srcset="">
+    <div style="color: #56b6f7;" class="sidebar-header">
+        HalloDek
     </div>
     <div class="sidebar-menu">
         <ul class="menu">
