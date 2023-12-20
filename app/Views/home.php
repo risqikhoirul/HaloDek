@@ -9,7 +9,7 @@
             Di dunia yang serba cepat saat ini, akses ke layanan medis yang cepat dan efisien merupakan hal yang sangat penting. Ketika dihadapkan pada keadaan darurat medis atau mencari pertolongan medis segera, kemampuan untuk menerima layanan medis yang cepat
               dapat secara signifikan memengaruhi hasil dari suatu situasi.
             </p>
-            <button class="btn btn-primary">Get Services</button>
+            <!-- <button class="btn btn-primary">Get Services</button> -->
           </div>
         </div>
         <div class="col-md-6">
