@@ -53,11 +53,11 @@
                                 <input type="hidden" value="<?= $idMedia ?>" name="idMedia">
                                 <div class="form-group">
                                     <label for="basicNama">ID Media</label>
-                                    <input type="text" value="<?= $getMedia[$idMedia]['id_Media']; ?>" class="form-control" readonly="readonly">
+                                    <input type="text" value="<?= $idMedia ?>" class="form-control" readonly="readonly">
                                 </div>
                                 <div class="form-group">
                                     <label for="basicNama">Judul</label>
-                                    <input type="text" value="<?= $getMedia[$idMedia]['title']; ?>" class="form-control <?= $errorMessage ? 'is-invalid' : '' ?>" id="basicNama" name="title" placeholder="Enter judul">
+                                    <input type="text" value="<?= $getMedia['title']; ?>" class="form-control <?= $errorMessage ? 'is-invalid' : '' ?>" id="basicNama" name="title" placeholder="Enter judul">
                                 </div>
 
                                 <div class="form-group">
@@ -65,7 +65,7 @@
                                     <!-- <textarea class="form-control" id="snow" name="content" rows="5" placeholder="Masukkan konten"></textarea> -->
                                     <div>
                                     <input type="hidden" name="content">
-                                    <div id="full" style="min-height: 160px;"><?= $getMedia[$idMedia]['content']; ?></div>
+                                    <div id="full" style="min-height: 160px;">"<?= $getMedia['content']; ?></div>
                                     </div>
                                 </div>
 

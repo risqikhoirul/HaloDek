@@ -15,6 +15,11 @@ class Media extends BaseController
         // start session
         $this->session = Services::session();
     }
+        // Fungsi untuk membatasi jumlah kata
+    private function limitWords($text, $limit) {
+        $words = explode(' ', $text);
+        return implode(' ', array_slice($words, 0, $limit));
+    }
     public function index()
     {
         if (!$this->session->isLoggedIn) {
@@ -24,10 +29,21 @@ class Media extends BaseController
         $model = new ModelMedia();
         $data = [
             'getMedia' => $model->findAll(),
+            'getThumail' => $model->findAll(),
             'usr' => $this->session->username,
             'title' => 'Media',
         ];
-        return view('dashboard/media', $data);
+        $columnName = 'content'; // Gantilah dengan nama kolom teks yang diinginkan
+
+        // Tentukan batasan jumlah kata (limit)
+        $wordLimit = 20; // Ganti 20 dengan jumlah kata yang diinginkan
+
+
+        // Proses setiap baris untuk membatasi jumlah kata
+        foreach ($data['getThumail'] as &$record) {
+            $record[$columnName] = $this->limitWords($record[$columnName], $wordLimit);
+        }
+        return view('dashboard/media/mediaLihat', $data);
     }
     public function tambah()
     {
@@ -76,7 +92,7 @@ class Media extends BaseController
         
         $model = new ModelMedia();
         $data = [
-            'getMedia' => $model->findAll(),
+            'getMedia' => $model->find($idMedia),
             'idMedia' => $idMedia,
             'usr' => $this->session->username,
             'title' => 'Ubah Content',
@@ -106,11 +122,11 @@ class Media extends BaseController
     
         if (!$model->update($id['idMedia'], $dataMedia)) {
             $model->transRollback(); // Rollback transaksi jika terjadi kesalahan
-            return redirect()->to("/dashboard/mediakesehatan/ubah")->withInput()->with('errors', $model->errors());
+            return redirect()->back()->withInput()->with('errors', $model->errors());
         }
     
         $model->transComplete();
-        return redirect()->to("/dashboard/mediakesehatan/ubah")->with('success', 'Data updated successfully.');
+        return redirect()->back()->with('success', 'Data updated successfully.');
     }
     
 

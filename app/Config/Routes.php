@@ -42,9 +42,11 @@ $routes->get('/dashboard/setting', 'Dashboard\Setting::index');
 $routes->post('/dashboard/setting/update', 'Dashboard\Setting::update');
 
 
+$routes->get('/dashboard/mediakesehatan', 'Dashboard\Media::index');
 $routes->get('/dashboard/mediakesehatan/tambah', 'Dashboard\Media::tambah');
 $routes->post('/dashboard/mediakesehatan/tambah/add', 'Dashboard\Media::add');
 $routes->get('/dashboard/mediakesehatan/ubah/(:num)', 'Dashboard\Media::ubah/$1');
 $routes->post('/dashboard/mediakesehatan/ubah/update', 'Dashboard\Media::update');
+$routes->delete('/dashboard/mediakesehatan/delete/(:num)', 'Dashboard\Media::delete/$1');
 
 
