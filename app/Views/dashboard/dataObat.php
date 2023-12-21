@@ -144,7 +144,7 @@
                                 </div>
                                 <div class="form-group">
                             <label for="basicJenis">Jumlah</label>
-                            <input type="number" value="<?= esc($obat['jumlah']); ?>" class="form-control <?= $errorMessage ? 'is-invalid' : '' ?>" id="basicJenis" name="jumlah" placeholder="Enter jenis obat">
+                            <input type="number" value="<?= esc($obat['jumlah']); ?>" class="form-control" id="basicJenis" name="jumlah" placeholder="Enter jenis obat">
                         </div>
                             </div>
 

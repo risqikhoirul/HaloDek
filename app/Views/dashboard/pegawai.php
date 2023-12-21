@@ -178,46 +178,48 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="post" action="/dashboard/pegawai/tambah">
+                            <form class="form" method="post" action="/dashboard/pegawai/ubah">
+                                
                                 <div class="row">
                                     <div class="col-md-6 col-12">
+                                    <input type="hidden" name="id_user" value="<?= $pegawai['id_user']; ?>">
                                         <div class="form-group">
                                             <label for="first-name-column">First Name</label>
-                                            <input type="text" id="first-name-column" class="form-control" placeholder="First Name"
+                                            <input type="text" id="first-name-column" value="<?= esc($pegawai['firstname']); ?>" class="form-control" placeholder="First Name"
                                                 name="firstname">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="last-name-column">Last Name</label>
-                                            <input type="text" id="last-name-column" class="form-control" placeholder="Last Name"
+                                            <input type="text" id="last-name-column" value="<?= esc($pegawai['lastname']); ?>" class="form-control" placeholder="Last Name"
                                                 name="lastname">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="city-column">Username</label>
-                                            <input type="text" id="city-column" class="form-control" placeholder="Username" name="username">
+                                            <input type="text" id="city-column" value="<?= esc($pegawai['username']); ?>" class="form-control" placeholder="Username" name="username">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="country-floating">Email</label>
-                                            <input type="email" id="country-floating" class="form-control" name="email"
+                                            <input type="email" id="country-floating" value="<?= esc($pegawai['email']); ?>" class="form-control" name="email"
                                                 placeholder="Email">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="company-column">Password</label>
-                                            <input type="password" id="company-column" class="form-control" name="password"
+                                            <input type="password" id="company-column" value="********" class="form-control" name="password"
                                                 placeholder="Password">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="email-id-column">Password</label>
-                                            <input type="password" id="email-id-column" class="form-control" name="password_confirm"
+                                            <input type="password" id="email-id-column" value="********" class="form-control" name="password_confirm"
                                                 placeholder="Password Confirm">
                                         </div>
                                     </div>

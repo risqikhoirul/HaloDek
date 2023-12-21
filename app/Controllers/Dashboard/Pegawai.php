@@ -39,6 +39,7 @@ class Pegawai extends BaseController
         $getRule = $model->getRule();
         $model->setValidationRules($getRule);
         
+        
         $dataPegawai = [
             'firstname'         => $this->request->getPost('firstname'),
             'lastname'          => $this->request->getPost('lastname'),
@@ -60,6 +61,7 @@ class Pegawai extends BaseController
         $model = new ModelUser();
         $getRule = $model->getRule();
         $model->setValidationRules($getRule);
+        $id = ["id_user" => $this->request->getPost('id_user')];
         $dataPegawai = [
             'firstname'         => $this->request->getPost('firstname'),
             'lastname'          => $this->request->getPost('lastname'),
@@ -69,7 +71,7 @@ class Pegawai extends BaseController
             'password_confirm'  => $this->request->getPost('password_confirm'),
         ];
 
-        if (!$model->update($id, $dataPegawai)) {
+        if (!$model->update($id['id_user'], $dataPegawai)) {
             return redirect()->to("/dashboard/pegawai")->withInput()->with('errors', $model->errors());
         }
         return redirect()->to("/dashboard/pegawai")->with('success', 'Sukses Mengubah Data Pegawai');

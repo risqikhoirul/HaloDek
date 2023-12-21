@@ -23,7 +23,7 @@
                     <div class="text-center mb-5">
                         <img src="<?= base_url("assets/images/favicon.svg"); ?>" height="48" class='mb-4'>
                         <h3>Sign In</h3>
-                        <p>Please sign in to continue to Voler.</p>
+                        <p>Please sign in to continue to HalloDek.</p>
                     </div>
                     <?php $errorMessage = session('error'); ?>
 <?php if ($errorMessage): ?>

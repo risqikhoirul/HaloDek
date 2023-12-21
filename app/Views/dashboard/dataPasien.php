@@ -144,7 +144,7 @@
                                 </div>
                                 <div class="form-group">
                             <label for="basicJenis">Riwayat</label>
-                            <input type="text" value="<?= esc($pasien['riwayat']); ?>" class="form-control <?= $errorMessage ? 'is-invalid' : '' ?>" id="basicJenis" name="riwayat">
+                            <input type="text" value="<?= esc($pasien['riwayat']); ?>" class="form-control" id="basicJenis" name="riwayat">
                         </div>
                             </div>
 
