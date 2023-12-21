@@ -81,19 +81,20 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="company-column">Password</label>
-                                            <input type="password" id="company-column" class="form-control" name="password"
-                                                placeholder="Password">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="email-id-column">Password</label>
-                                            <input type="password" id="email-id-column" class="form-control" name="password_confirm"
-                                                placeholder="Password Confirm">
-                                        </div>
-                                    </div>
+    <div class="form-group">
+        <label for="email-id-column">Password</label>
+        <input type="password" id="pw" value='********' class="form-control" name="password" placeholder="Password">
+    </div>
+</div>
+
+<div class="col-md-6 col-12">
+    <div class="form-group">
+        <label for="confirm-password-column">Confirm Password</label>
+        <input type="password" id="pwconfirm" class="form-control" name="password_confirm" placeholder="Confirm Password">
+        <span id="confirm-password-error" style="color: red;"></span>
+    </div>
+</div>
+<span id="confirm-password-error" style="color: red;"></span>
                                     <div class="form-group col-12">
                                         <div class='form-check'>
                                             <div class="checkbox">
@@ -210,19 +211,20 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="company-column">Password</label>
-                                            <input type="password" id="company-column" value="********" class="form-control" name="password"
-                                                placeholder="Password">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="email-id-column">Password</label>
-                                            <input type="password" id="email-id-column" value="********" class="form-control" name="password_confirm"
-                                                placeholder="Password Confirm">
-                                        </div>
-                                    </div>
+    <div class="form-group">
+        <label for="email-id-column">Password</label>
+        <input type="password" id="pw" value='********' class="form-control" name="password" placeholder="Password">
+    </div>
+</div>
+
+<div class="col-md-6 col-12">
+    <div class="form-group">
+        <label for="confirm-password-column">Confirm Password</label>
+        <input type="password" id="pwconfirm" class="form-control" name="password_confirm" placeholder="Confirm Password">
+        <span id="confirm-password-error" style="color: red;"></span>
+    </div>
+</div>
+<span id="confirm-password-error" style="color: red;"></span>
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Tambah</button>
                                         <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>

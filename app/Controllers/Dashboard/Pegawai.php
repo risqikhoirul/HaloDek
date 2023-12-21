@@ -46,7 +46,6 @@ class Pegawai extends BaseController
             'email'          => $this->request->getPost('email'),
             'username'          => $this->request->getPost('username'),
             'password'          => $this->request->getPost('password'),
-            'password_confirm'  => $this->request->getPost('password_confirm'),
             'level'  => 'pegawai'
         ];
 
@@ -68,7 +67,6 @@ class Pegawai extends BaseController
             'email'          => $this->request->getPost('email'),
             'username'          => $this->request->getPost('username'),
             'password'          => $this->request->getPost('password'),
-            'password_confirm'  => $this->request->getPost('password_confirm'),
         ];
 
         if (!$model->update($id['id_user'], $dataPegawai)) {

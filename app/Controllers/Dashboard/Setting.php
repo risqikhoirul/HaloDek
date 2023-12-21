@@ -31,13 +31,21 @@ class Setting extends BaseController
     public function update()
     {
         $modelUser = new ModelUser();
+        $user = $modelUser->where('username', $this->request->getPost('username'))->first();
+        
+        if (is_null($user) || !password_verify($this->request->getPost('passwordOld'), $user['password'])) {
+            // Password lama tidak sesuai dengan password yang tersimpan
+            return redirect()->to('/dashboard/setting')->withInput()->with('errors', 'Password Lama Salah');
+        } else {
+            // Password lama sesuai, lanjutkan dengan logika perubahan password
+
+        
         $idUser = $this->session->id_user;
         $dataProfil = [
             "fristname" => $this->request->getPost('firstname'),
             "lastname" => $this->request->getPost('lastname'),
             "email" => $this->request->getPost('email'),
-            "password" => $this->request->getPost('password'),
-            "password_confirm" => $this->request->getPost('password_confirm'),
+            "password" => $this->request->getPost('password')
         ];
     
         $modelUser->transStart();
@@ -53,4 +61,5 @@ class Setting extends BaseController
         $modelUser->transComplete();
         return redirect()->to("/dashboard/setting")->with('success', 'Data updated successfully.');
     }
+}
 }

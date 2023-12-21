@@ -104,7 +104,27 @@ if ($isLevel == 'admin') {
         <!-- start content -->
         <?= $this->renderSection('content'); ?>
         <!-- end content -->
-            
+            <!-- Add this script after your form -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var passwordInput = document.getElementById('pw');
+        var confirmPasswordInput = document.getElementById('pwconfirm');
+        var confirmPasswordError = document.getElementById('confirm-password-error');
+
+        function validatePassword() {
+            if (passwordInput.value !== confirmPasswordInput.value) {
+                confirmPasswordError.textContent = 'Password and Confirm Password do not match';
+                return false;
+            } else {
+                confirmPasswordError.textContent = '';
+                return true;
+            }
+        }
+
+        confirmPasswordInput.addEventListener('input', validatePassword);
+    });
+</script>
+
     <script src="<?= base_url("assets/js/feather-icons/feather.min.js"); ?>"></script>
     <script src="<?= base_url("assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"); ?>"></script>
     <script src="<?= base_url("assets/js/app.js"); ?>"></script>

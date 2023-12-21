@@ -6,9 +6,7 @@
 <?php $errorMessage = session('errors'); ?>
 <?php if ($errorMessage): ?>
     <div class="alert alert-danger">
-    <?php foreach ($errorMessage as $error): ?>
-            <?= esc($error) ?><br>
-        <?php endforeach; ?>
+            <?= esc($errorMessage) ?><br>
     </div>
         
 <?php endif; ?>
@@ -87,18 +85,27 @@
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="company-column">Password</label>
-                                            <input type="password" id="company-column" value='********' class="form-control" name="password"
-                                                placeholder="Password">
+                                            <label for="company-column">Password Old</label>
+                                            <input type="password" id="company-column" value='********' class="form-control" name="passwordOld"
+                                                placeholder="Password Old">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="email-id-column">Password</label>
-                                            <input type="password" id="email-id-column" value='********' class="form-control" name="password_confirm"
-                                                placeholder="Password Confirm">
-                                        </div>
-                                    </div>
+    <div class="form-group">
+        <label for="email-id-column">Password</label>
+        <input type="password" id="pw" value='********' class="form-control" name="password" placeholder="Password">
+    </div>
+</div>
+
+<div class="col-md-6 col-12">
+    <div class="form-group">
+        <label for="confirm-password-column">Confirm Password</label>
+        <input type="password" id="pwconfirm" class="form-control" name="password_confirm" placeholder="Confirm Password">
+        <span id="confirm-password-error" style="color: red;"></span>
+    </div>
+</div>
+<span id="confirm-password-error" style="color: red;"></span>
+
                                     <div class="form-group col-12">
                                         <div class='form-check'>
                                             <div class="checkbox">
