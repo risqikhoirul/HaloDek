@@ -6,6 +6,8 @@
     <title><?= $title; ?> | HalloDek</title>
     
     <link rel="stylesheet" href="<?= base_url("assets/css/bootstrap.css"); ?>">
+    <link rel="stylesheet" href="<?= base_url("assets/vendors/quill/quill.bubble.css"); ?>">
+    <link rel="stylesheet" href="<?= base_url("assets/vendors/quill/quill.snow.css"); ?>">
     <link rel="stylesheet" href="<?= base_url("assets/vendors/simple-datatables/style.css"); ?>">
     <link rel="stylesheet" href="<?= base_url("assets/vendors/perfect-scrollbar/perfect-scrollbar.css"); ?>">
     <link rel="stylesheet" href="<?= base_url("assets/css/app.css"); ?>">
@@ -65,9 +67,31 @@ if ($isLevel == 'admin') {
     </a> 
 </li>';
 }
-?>
-               
+?>      
+<li class="sidebar-item  has-sub">
+
+<a href="#" class='sidebar-link'>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-newspaper" viewBox="0 0 16 16">
+  <path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5z"/>
+  <path d="M2 3h10v2H2zm0 3h4v3H2zm0 4h4v1H2zm0 2h4v1H2zm5-6h2v1H7zm3 0h2v1h-2zM7 8h2v1H7zm3 0h2v1h-2zm-3 2h2v1H7zm3 0h2v1h-2zm-3 2h2v1H7zm3 0h2v1h-2z"/>
+</svg> 
+    <span>Media</span>
+</a>
+
+
+<ul class="submenu ">
+    
+    <li>
+        <a href="/dashboard/mediakesehatan">Lihat</a>
+    </li>
+    
+    <li>
+        <a href="/dashboard/mediakesehatan/tambah">Tambah</a>
+    </li>
+      
         </ul>
+        
+        
     </div>
     <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
 </div>
@@ -124,7 +148,9 @@ if ($isLevel == 'admin') {
         confirmPasswordInput.addEventListener('input', validatePassword);
     });
 </script>
-
+    
+    <script src="<?= base_url("assets/vendors/quill/quill.min.js"); ?>"></script>
+    <script src="<?= base_url("assets/js/pages/form-editor.js"); ?>"></script>
     <script src="<?= base_url("assets/js/feather-icons/feather.min.js"); ?>"></script>
     <script src="<?= base_url("assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"); ?>"></script>
     <script src="<?= base_url("assets/js/app.js"); ?>"></script>
