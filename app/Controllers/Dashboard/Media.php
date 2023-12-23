@@ -45,6 +45,39 @@ class Media extends BaseController
         }
         return view('dashboard/media/mediaLihat', $data);
     }
+    public function indexAll()
+    {
+        
+        $model = new ModelMedia();
+        $data = [
+            'getThumail' => $model->findAll(),
+            'usr' => $this->session->username,
+            'title' => 'Media',
+        ];
+        $columnName = 'content'; // Gantilah dengan nama kolom teks yang diinginkan
+
+        // Tentukan batasan jumlah kata (limit)
+        $wordLimit = 20; // Ganti 20 dengan jumlah kata yang diinginkan
+
+
+        // Proses setiap baris untuk membatasi jumlah kata
+        foreach ($data['getThumail'] as &$record) {
+            $record[$columnName] = $this->limitWords($record[$columnName], $wordLimit);
+        }
+        return view('media', $data);
+    }
+    public function indexFind(int $id)
+    {
+        
+        $model = new ModelMedia();
+        $data = [
+            'getMedia' => $model->find($id),
+            'usr' => $this->session->username,
+            'title' => 'Media',
+        ];
+
+        return view('viewMedia', $data);
+    }
     public function tambah()
     {
         if (!$this->session->isLoggedIn) {

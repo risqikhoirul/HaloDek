@@ -49,4 +49,7 @@ $routes->get('/dashboard/mediakesehatan/ubah/(:num)', 'Dashboard\Media::ubah/$1'
 $routes->post('/dashboard/mediakesehatan/ubah/update', 'Dashboard\Media::update');
 $routes->delete('/dashboard/mediakesehatan/delete/(:num)', 'Dashboard\Media::delete/$1');
 
+$routes->get('/media', 'Dashboard\Media::indexAll');
+$routes->get('/media/view/(:num)', 'Dashboard\Media::indexFind/$1');
+
 
